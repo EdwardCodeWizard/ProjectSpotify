@@ -10,9 +10,9 @@ import java.io.IOException;
 
 public class RecomendadorDeMusicaCansado {
     // Autenticamos con la API de Spotify
-    private static final String CLIENT_ID = "TU_CLIENT_ID";
-    private static final String CLIENT_SECRET = "TU_CLIENT_SECRET";
-    private static final String REDIRECT_URI = "TU_REDIRECT_URI";
+    private static final String CLIENT_ID = "CLIENT_ID"; //datos proporcionados al registrarse en la api de spotify developers
+    private static final String CLIENT_SECRET = "CLIENT_SECRET";
+    private static final String REDIRECT_URI = "REDIRECT_URI";
     private static final String QUERY = "relaxing";
 
     public void recomendarCancion() {

@@ -9,9 +9,9 @@ import java.io.IOException;
 
 public class RecomendadorDePodcasts {
 
-  private static final String CLIENT_ID = "TU_CLIENT_ID";
-  private static final String CLIENT_SECRET = "TU_CLIENT_SECRET";
-  private static final String REDIRECT_URI = "TU_REDIRECT_URI";
+  private static final String CLIENT_ID = "CLIENT_ID";
+  private static final String CLIENT_SECRET = "CLIENT_SECRET";
+  private static final String REDIRECT_URI = "REDIRECT_URI";
   private static final String QUERY = "podcast";
 
   public void recomendarPodcast() {
