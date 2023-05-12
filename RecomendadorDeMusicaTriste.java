@@ -17,25 +17,29 @@ public class RecomendadorDeMusicaTriste {
     try {
       // Conectamos con la API de Spotify
       SpotifyApi spotifyApi = new SpotifyApi.Builder()
-              .setClientId(CLIENT_ID)
-              .setClientSecret(CLIENT_SECRET)
-              .setRedirectUri(REDIRECT_URI)
-              .build();
+          .setClientId(CLIENT_ID)
+          .setClientSecret(CLIENT_SECRET)
+          .setRedirectUri(REDIRECT_URI)
+          .build();
       spotifyApi.clientCredentials().build().execute();
+      String accessToken = spotifyApi.getAccessToken();
 
-      // Buscamos una canción en Spotify
-      SearchTracksRequest searchTracksRequest = spotifyApi.searchTracks(QUERY).limit(1).build();
-      Paging<Track> trackPaging = searchTracksRequest.execute();
-      Track[] tracks = trackPaging.getItems();
-
-      // Mostramos el link de la canción encontrada
+      // Realizamos la búsqueda de una canción triste en Spotify
+      SearchTracksRequest searchTracksRequest = spotifyApi.searchTracks(QUERY)
+          .market("ES")
+          .limit(1)
+          .build();
+      Paging<Track> paging = searchTracksRequest.execute();
+      Track[] tracks = paging.getItems();
       if (tracks.length > 0) {
-        System.out.println("¡Esta canción te hará sentir mejor! " + tracks[0].getExternalUrls().get("spotify"));
+        System.out.println("Te recomendamos escuchar: " + tracks[0].getName() + " de " + tracks[0].getArtists()[0].getName());
+        System.out.println("Escúchala en Spotify: " + tracks[0].getExternalUrls().get("spotify"));
       } else {
-        System.out.println("No se encontró ninguna canción");
+        System.out.println("No se encontraron canciones tristes en Spotify");
       }
+
     } catch (IOException | SpotifyWebApiException e) {
-      System.out.println("Error al buscar la canción: " + e.getMessage());
+      System.out.println("Error al conectar con la API de Spotify");
     }
   }
 }

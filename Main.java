@@ -1,14 +1,10 @@
 import java.util.Scanner;
-
-public class RecomendadorDeMusica {
-
+public class Main {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
-
     // Pedimos al usuario que ingrese su estado de ánimo
     System.out.println("¿Cómo te sientes? (feliz, triste, cansado, enojado, aburrido)");
     String estadoDeAnimo = scanner.nextLine();
-
     // Llamamos a la clase correspondiente según el estado de ánimo
     if (estadoDeAnimo.equals("feliz")) {
       RecomendadorDeMusicaFeliz recomendador = new RecomendadorDeMusicaFeliz();
@@ -28,7 +24,6 @@ public class RecomendadorDeMusica {
     } else {
       System.out.println("Estado de ánimo no reconocido");
     }
-
     scanner.close();
   }
 }
